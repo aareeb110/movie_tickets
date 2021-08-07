@@ -30,7 +30,7 @@ def query_with_fetchone():
 
 def query_with_fetchall():
     """
-    Queries a row from the Customer table using MySQLQuery.fetchall(). Returns nothing.
+    Queries all rows from the Customer table using MySQLQuery.fetchall(). Returns nothing.
     """
     try:
         db_config = read_db_config()
