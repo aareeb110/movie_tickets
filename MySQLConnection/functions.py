@@ -75,6 +75,30 @@ def create_reservation(customer_id, movie_id, theatre_id, ticket_qty, seat):
         conn.close()
 
 
+def update_reservation(id, customer_id, movie_id, theatre_id, ticket_qty, seat):
+    query = "update reservation " \
+            "set customer_id = %s, movie_id = %s, theatre_id = %s, ticket_qty = %s, seat = %s, reservation_date = " \
+            "current_timestamp() where id = %s"
+
+    args = (customer_id, movie_id, theatre_id, ticket_qty, seat)
+
+    try:
+        db_config = read_db_config()
+        conn = MySQLConnection(**db_config)
+
+        cursor = conn.cursor()
+        cursor.execute(query, args)
+
+        conn.commit()
+
+    except Error as e:
+        print(e)
+
+    finally:
+        cursor.close()
+        conn.close()
+
+
 def payment(customer_id, movie_id, theatre_id, ticket_qty, seat):
 
     create_reservation(customer_id, movie_id, theatre_id, ticket_qty, seat)

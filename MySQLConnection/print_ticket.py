@@ -1,5 +1,5 @@
 from mysql.connector import MySQLConnection, Error
-from mysql_dbconfig import read_db_config
+from MySQLConnection.mysql_dbconfig import read_db_config
 from fpdf import FPDF
 
 
